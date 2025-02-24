@@ -1,6 +1,5 @@
 package com.tary.ServiceFlow.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,20 +41,7 @@ public class Usuario implements UserDetails {
         ADMIN, TECNICO, CLIENTE
     }
 
-    // Métodos para verificar a role do usuário
-    public boolean isAdmin() {
-        return this.role == Role.ADMIN;
-    }
-
-    public boolean isTecnico() {
-        return this.role == Role.TECNICO;
-    }
-
-    public boolean isCliente() {
-        return this.role == Role.CLIENTE;
-    }
-
-    // Métodos da interface UserDetails (para Spring Security)
+    // Métodos da interface UserDetails (Spring Security)
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> "ROLE_" + this.role.name());
