@@ -27,6 +27,9 @@ public class UsuarioService {
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha())); // Criptografa a senha antes de salvar
         return usuarioRepository.save(usuario);
     }
+    public Usuario salvarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
 
     // Buscar usuário pelo ID
     public Optional<Usuario> buscarPorId(Long id) {
