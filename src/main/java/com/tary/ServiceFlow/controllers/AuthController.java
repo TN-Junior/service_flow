@@ -29,7 +29,7 @@ public class AuthController {
             throw new RuntimeException("Credenciais inválidas");
         }
 
-        return jwtUtil.generateToken(user.getEmail()); // Passa apenas o email do usuário
+        return jwtUtil.generateToken(user.getEmail()); 
 
     }
 
@@ -40,13 +40,13 @@ public class AuthController {
             throw new RuntimeException("E-mail já cadastrado");
         }
 
-        // Hash da senha
+
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 
-        // Salva o usuário no banco de dados
+
         usuarioService.salvarUsuario(usuario);
 
-        // Retorna um token JWT para o usuário recém-criado
+
         return jwtUtil.generateToken(usuario.getEmail());
     }
 }
